@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/pgql-api-api
+
+    docker:
+      - image: node:12.13.0-alpine
+        environment:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/pgql_api_test
+      - image: postgres:12.0-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: pgql_api_test
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      # run tests!
+      - run: npm run test:cov
+
+      - run:
+          name: Report Coverage
+          command: cat ./coverage/lcov.info | npx codacy-coverage
