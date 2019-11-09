@@ -5,3 +5,8 @@ node_modules
 
 /coverage
 .nyc_output
+
+test-results/*
+!test-results/mocha
+test-results/mocha/*
+!test-results/mocha/.keep

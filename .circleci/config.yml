@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/pgql-api-api
+    working_directory: ~/pgql-api
 
     docker:
       - image: node:12.13.0-alpine
@@ -29,7 +29,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       # run tests!
-      - run: npm run test:cov
+      - run: npm run test:cov -- --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml
+
+      - store_test_results:
+          path: ~/pgql-api/test-results
 
       - run:
           name: Report Coverage
