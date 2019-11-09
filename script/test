@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.." || return
+
+export DBENV=test
+export NODE_ENV=test
+export COMPOSE_PROJECT_NAME=pgql-api-test
+
+script/update
+
+docker-compose run --rm server npm run test:cov

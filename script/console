@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.." || return
+
+docker-compose exec -it server /bin/sh

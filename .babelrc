@@ -1,0 +1,28 @@
+{
+  "presets": [
+    "@babel/typescript",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@server": "./src/server",
+          "@spec": "./spec"
+        }
+      }
+    ]
+  ],
+  "sourceMaps": "inline",
+  "sourceRoot": "./src"
+}

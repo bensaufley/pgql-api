@@ -1,0 +1,15 @@
+{
+  "all": true,
+  "include": [
+    "src"
+  ],
+  "extension": [
+    ".ts",
+    ".tsx"
+  ],
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary"
+  ]
+}

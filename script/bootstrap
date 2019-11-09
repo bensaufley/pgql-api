@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.." || return
+
+docker pull node:12.13.0-alpine
+docker pull postgres:12.0-alpine
+docker pull dadarek/wait-for-dependencies

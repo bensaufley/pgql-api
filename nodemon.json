@@ -1,0 +1,10 @@
+{
+  "ext": "ts",
+  "execMap": {
+    "ts": "node --require ./babel-register.js"
+  },
+  "verbose": true,
+  "watch": [
+    "src/"
+  ]
+}

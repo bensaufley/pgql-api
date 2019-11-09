@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dev.dockerfile
+    command: ["npm", "run", "dev"]
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/pgql_api_${DBENV:-dev}"
+      NODE_ENV: "${NODE_ENV:-development}"
+      PORT: 8080
+    ports:
+      - "5151:8080"
+    volumes:
+      - .:/usr/src/pgql-api
+  db:
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: "pgql_api_${DBENV:-dev}"
+    image: postgres:12.0-alpine
+    ports:
+      - "5152:5432"
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  start_rdbms:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - db
+    command: db:5432
+volumes:
+  pgdata:
