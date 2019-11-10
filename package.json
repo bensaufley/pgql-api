@@ -12,6 +12,7 @@
     "@babel/preset-typescript": "^7.7.2",
     "@babel/register": "^7.7.0",
     "@types/chai": "^4.2.4",
+    "@types/knex": "^0.16.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.7",
     "@types/sinon": "^7.5.0",
@@ -31,6 +32,7 @@
     "mocha": "^6.2.2",
     "mocha-junit-reporter": "^1.23.1",
     "nodemon": "^1.19.4",
+    "npm-run-all": "^4.1.5",
     "nyc": "^14.1.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
@@ -50,10 +52,15 @@
     "build": "rimraf './.build/!(.keep)*' && babel --verbose --out-dir ./.build --extensions \".js,.ts\" src",
     "dev": "nodemon src/index.ts",
     "format": "eslint --fix --ext '.js,.ts'",
-    "lint": "eslint --ext '.js,.ts' .",
+    "lint": "npm-run-all -c -p --aggregate-output lint:ts lint:types",
+    "lint:ts": "eslint --ext '.js,.ts' .",
     "lint:types": "tsc --noEmit",
     "test": "mocha --require ./babel-register.js",
     "test:cov": "nyc --require ./babel-register.js mocha"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "dependencies": {
+    "knex": "^0.20.1",
+    "pg": "^7.12.1"
+  }
 }

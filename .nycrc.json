@@ -4,6 +4,7 @@
     "src"
   ],
   "exclude": [
+    "db",
     "src/index.ts"
   ],
   "extension": [

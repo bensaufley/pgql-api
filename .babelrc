@@ -17,6 +17,7 @@
       {
         "root": ["./"],
         "alias": {
+          "@db": "./db",
           "@server": "./src/server",
           "@spec": "./spec"
         }
