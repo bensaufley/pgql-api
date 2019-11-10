@@ -5,7 +5,11 @@ services:
       context: .
       dockerfile: Dev.dockerfile
     command: ["npm", "run", "dev"]
+    depends_on:
+      - db
+      - start_db
     environment:
+      APP_ENV: "${APP_ENV:-dev}"
       DATABASE_URL: "postgresql://postgres:postgres@db:5432/pgql_api_${DBENV:-dev}"
       NODE_ENV: "${NODE_ENV:-development}"
       PORT: 8080
@@ -24,10 +28,12 @@ services:
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
-  start_rdbms:
+  start_db:
     image: dadarek/wait-for-dependencies
     depends_on:
       - db
+    environment:
+      TIMEOUT_LENGTH: 10
     command: db:5432
 volumes:
   pgdata:

@@ -12,12 +12,14 @@
   ],
   "plugins": [
     "@babel/proposal-class-properties",
+    "import-graphql",
     [
       "module-resolver",
       {
         "root": ["./"],
         "alias": {
           "@db": "./db",
+          "@graphql": "./src/graphql",
           "@server": "./src/server",
           "@spec": "./spec"
         }

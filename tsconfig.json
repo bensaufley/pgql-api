@@ -16,6 +16,7 @@
     "outDir": ".build",
     "paths": {
       "@db/*": ["./db/*"],
+      "@graphql/*": ["./src/graphql/*"],
       "@server/*": ["./src/server/*"],
       "@spec/*": ["./spec/*"]
     },

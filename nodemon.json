@@ -1,5 +1,5 @@
 {
-  "ext": "ts",
+  "ext": "ts,graphql",
   "execMap": {
     "ts": "node --require ./babel-register.js"
   },

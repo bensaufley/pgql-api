@@ -4,6 +4,8 @@ cd "$(dirname "$0")/.." || return
 
 script/setup
 
+docker-compose run --rm start_db
+
 docker-compose up
 
 ec="$?"

@@ -32,6 +32,9 @@
     "import/extensions": [
       ".ts", ".js"
     ],
+    "import/ignore": [
+      "graphql-tag"
+    ],
     "import/resolver": {
       "babel-module": {
         "extensions": [".js", ".ts"]

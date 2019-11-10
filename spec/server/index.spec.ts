@@ -1,13 +1,29 @@
 import { expect } from 'chai';
+import { Server } from 'http';
+import supertest from 'supertest';
 
-import server from '@server/index';
+import { serve } from '@server/index';
 
 describe('@server/index', () => {
-  it('works', () => {
-    expect(server('test')).to.eq('stub called with arg test');
+  let server: Server;
+
+  beforeEach(() => {
+    server = serve();
   });
 
-  it('sets a default', () => {
-    expect(server()).to.eq('stub called with arg b');
+  afterEach(() => {
+    server.close();
+  });
+
+  it('works', async () => {
+    const resp = await supertest(server)
+      .get('/')
+      .query({
+        query: '{users{name}}',
+      });
+
+    expect(resp.body).to.eql({
+      data: { users: [] },
+    });
   });
 });

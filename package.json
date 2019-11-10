@@ -17,8 +17,10 @@
     "@types/node": "^12.12.7",
     "@types/sinon": "^7.5.0",
     "@types/sinon-chai": "^3.2.3",
+    "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
+    "babel-plugin-import-graphql": "^2.7.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "chai": "^4.2.0",
     "codacy-coverage": "^3.4.0",
@@ -29,6 +31,7 @@
     "eslint-plugin-chai-friendly": "^0.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
+    "graphql-tag": "^2.10.1",
     "mocha": "^6.2.2",
     "mocha-junit-reporter": "^1.23.1",
     "nodemon": "^1.19.4",
@@ -38,6 +41,7 @@
     "rimraf": "^3.0.0",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0",
+    "supertest": "^4.0.2",
     "typescript": "^3.7.2"
   },
   "homepage": "https://github.com/bensaufley/pgql-api#readme",
@@ -60,7 +64,10 @@
   },
   "version": "0.1.0",
   "dependencies": {
+    "apollo-server-koa": "^2.9.7",
+    "graphql": "^14.5.8",
     "knex": "^0.20.1",
+    "koa": "^2.11.0",
     "pg": "^7.12.1"
   }
 }
