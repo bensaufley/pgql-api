@@ -1,2 +1,2 @@
-#import "./User.graphql"
+#import "../../records/users/User.graphql"
 #import "./Query.graphql"

@@ -11,7 +11,9 @@ services:
     environment:
       APP_ENV: "${APP_ENV:-dev}"
       DATABASE_URL: "postgresql://postgres:postgres@db:5432/pgql_api_${DBENV:-dev}"
+      JWT_SECRET: thisisnotasafesecret
       NODE_ENV: "${NODE_ENV:-development}"
+      PEPPER: thisisnotasafepepper
       PORT: 8080
     ports:
       - "5151:8080"
@@ -22,7 +24,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: "pgql_api_${DBENV:-dev}"
-    image: postgres:12.0-alpine
+    image: postgres:11.5-alpine
     ports:
       - "5152:5432"
     restart: always
@@ -33,7 +35,7 @@ services:
     depends_on:
       - db
     environment:
-      TIMEOUT_LENGTH: 10
+      TIMEOUT_LENGTH: 30
     command: db:5432
 volumes:
   pgdata:

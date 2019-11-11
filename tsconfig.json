@@ -17,6 +17,7 @@
     "paths": {
       "@db/*": ["./db/*"],
       "@graphql/*": ["./src/graphql/*"],
+      "@records/*": ["./src/records/*"],
       "@server/*": ["./src/server/*"],
       "@spec/*": ["./spec/*"]
     },

@@ -8,7 +8,12 @@ A starter repo for a Postgres GraphQL-based API
 
 ## Scripts
 
-This repo follows the [Scripts To Rule Them All] approach. Scripts can be run
-from the command line with `script/name`, e.g. `script/server`.
+This repo follows the [Scripts To Rule Them All] approach, with additions
+listed below. Scripts can be run from the command line with `script/name`,
+e.g. `script/server`.
+
+- `script/migrate`: runs `knex migrate:*` inside the container. Default action
+  is `latest`; other knex migrate actions can be run by name:
+  `script/migrate down`
 
 [scripts to rule them all]: https://github.com/github/scripts-to-rule-them-all

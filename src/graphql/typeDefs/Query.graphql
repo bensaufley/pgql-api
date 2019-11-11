@@ -1,3 +1,4 @@
 type Query {
-  users: [User]
+  users: [User!]
+  user(id: Int, email: String, username: String): User
 }

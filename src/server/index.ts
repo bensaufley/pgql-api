@@ -3,6 +3,7 @@ import { ApolloServer, PlaygroundConfig } from 'apollo-server-koa';
 
 import typeDefs from '@graphql/typeDefs/schema.graphql';
 import resolvers from '@graphql/resolvers';
+import context from '@server/context';
 
 export const koaServer = new Koa();
 
@@ -20,6 +21,7 @@ if (process.env.APP_ENV !== 'prod') {
 }
 
 const apolloServer = new ApolloServer({
+  context,
   debug,
   introspection,
   playground,

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.." || return
+
+leave_up="${LEAVE_UP:-false}"
+project_name="${COMPOSE_PROJECT_NAME:-pgql-api}"
+
+cmd="${1:-latest}"; shift
+
+db_running="false"
+[ "$(docker ps | grep "${project_name}_db")" != "" ] && db_running="true"
+
+if [ "$db_running" = "false" ]; then
+  docker-compose run --rm start_db
+  ec="$?"
+  [ "$ec" != "0" ] && exit "$ec"
+fi
+
+docker-compose run --rm server npx knex "migrate:$cmd" "$@"
+
+ec="$?"
+
+[ "$leave_up" = "false" ] && [ "$db_running" = "false" ] && docker-compose stop db
+
+exit "$ec"

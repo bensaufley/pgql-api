@@ -8,4 +8,6 @@ export COMPOSE_PROJECT_NAME=pgql-api-test
 
 script/update
 
+LEAVE_UP=true script/migrate
+
 docker-compose run --rm server npm run test:cov
