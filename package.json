@@ -64,7 +64,7 @@
   },
   "version": "0.1.0",
   "dependencies": {
-    "apollo-server-koa": "^2.9.7",
+    "apollo-server-koa": "^2.14.2",
     "graphql": "^14.5.8",
     "knex": "^0.20.1",
     "koa": "^2.11.0",
